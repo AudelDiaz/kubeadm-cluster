@@ -1,0 +1,10 @@
+---
+base_pkg_list:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+
+kube_pkg_list:
+  - kubeadm
+  - kubelet
+  - kubectl
