@@ -1,0 +1,16 @@
+---
+- name: Generate random token
+  shell: kubeadm token generate
+  register: token
+
+- name: Print token
+  debug:
+    msg: "Token: {{ token.stdout }}"
+
+- name: Deploy master
+  shell: "kubeadm init --token={{ token.stdout }} --kubernetes-version $(kubeadm version -o short)"
+  register: result
+
+- name: Print result
+  debug:
+    msg: "Token: {{ result.stdout }}"

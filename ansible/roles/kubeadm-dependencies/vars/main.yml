@@ -3,6 +3,8 @@ base_pkg_list:
   - apt-transport-https
   - ca-certificates
   - curl
+  - gnupg
+  - lsb-release
 
 kube_pkg_list:
   - kubeadm
