@@ -1,20 +1,20 @@
 ---
 - name: Install base dependencies
   apt:
-    name: '{{ base_pkg_list }}'
+    name: "{{ base_pkg_list }}"
     state: present
     update_cache: true
 - name: Download the Google Cloud public signing key
-  get_url: 
+  get_url:
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-    dest: /usr/share/keyrings/kubernetes-archive-keyring.gpg 
+    dest: /usr/share/keyrings/kubernetes-archive-keyring.gpg
 - name: Add the Kubernetes apt repository
-  lineinfile: 
+  lineinfile:
     path: /etc/apt/sources.list.d/kubernetes.list
     line: deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main
     create: yes
 - name: Install k8s dependencies
   apt:
-    name: '{{ kube_pkg_list }}'
+    name: "{{ kube_pkg_list }}"
     state: present
     update_cache: true
