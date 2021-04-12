@@ -3,14 +3,40 @@
   shell: kubeadm token generate
   register: token
 
+- name: Pull config images
+  shell: kubeadm config images pull
+
 - name: Print token
   debug:
-    msg: "Token: {{ token.stdout }}"
+    msg: "token: {{ token.stdout }}"
 
-- name: Deploy master
-  shell: "kubeadm init --token={{ token.stdout }} --kubernetes-version $(kubeadm version -o short)"
-  register: result
+- name: Init master
+  shell: "kubeadm init --token={{ token.stdout }} --apiserver-advertise-address=10.0.0.7 --kubernetes-version $(kubeadm version -o short)"
+
+- name: Register cert
+  shell: openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'
+  register: cert
 
 - name: Print result
   debug:
-    msg: "Token: {{ result.stdout }}"
+    msg: "ca-cert: {{ cert.stdout }}"
+
+- name: Create user config dir
+  file:
+    path: "/home/{{ user }}/.kube"
+    state: directory
+    mode: "0755"
+
+- name: Copy config
+  copy:
+    src: /etc/kubernetes/admin.conf
+    dest: "/home/{{ user }}/.kube/config"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    remote_src: yes
+
+- name: Register dummy host with variable
+  add_host:
+    name: "DUMMY_HOST"
+    TOKEN: "{{ token.stdout }}"
+    CERT: "{{ cert.stdout }}"
