@@ -5,6 +5,7 @@ base_pkg_list:
   - curl
   - gnupg
   - lsb-release
+  - net-tools
 
 kube_pkg_list:
   - kubeadm
