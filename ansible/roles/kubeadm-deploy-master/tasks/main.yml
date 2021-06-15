@@ -11,7 +11,7 @@
     msg: "token: {{ token.stdout }}"
 
 - name: Init master
-  shell: "kubeadm init --token={{ token.stdout }} --apiserver-advertise-address=10.0.0.7 --kubernetes-version $(kubeadm version -o short)"
+  shell: "kubeadm init --token={{ token.stdout }} --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.0.0.7 --kubernetes-version $(kubeadm version -o short)"
 
 - name: Register cert
   shell: openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'
@@ -34,6 +34,7 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     remote_src: yes
+
 
 - name: Register dummy host with variable
   add_host:

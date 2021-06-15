@@ -3,3 +3,4 @@
   become: yes
   roles:
     - kubeadm-deploy-master
+    - kubeadm-deploy-weave-net
