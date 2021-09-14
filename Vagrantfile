@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
     master.vm.box = "ubuntu/focal64"
     master.vm.hostname = "master"
     master.vm.box_check_update = true
-    master.vm.network "private_network", ip: "10.0.0.7"
+    master.vm.network "private_network", ip: "10.0.0.7", mac: "A8D3AEFB1F23"
     master.vm.provider "virtualbox" do |vb|
       vb.memory = "2048"
       vb.cpus = 2
@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
     worker.vm.box = "ubuntu/focal64"
     worker.vm.hostname = "worker"
     worker.vm.box_check_update = true
-    worker.vm.network "private_network", ip: "10.0.0.9"
+    worker.vm.network "private_network", ip: "10.0.0.9", mac: "A8D3B5DD300B"
     worker.vm.provider "virtualbox" do |vb|
       vb.memory = "2048"
       vb.cpus = 2

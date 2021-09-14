@@ -14,5 +14,27 @@
 - name: Adding existing user '{{ user }}' to group docker
   user: 
     name: '{{ user }}'
-    groups: docker
+    groups: ['docker',]
     append: yes
+
+- name: Setting up daemon.json
+  shell: |
+    cat <<EOF | tee /etc/docker/daemon.json
+    {
+      "exec-opts": ["native.cgroupdriver=systemd"],
+      "log-driver": "json-file",
+      "log-opts": {
+        "max-size": "100m"
+      },
+      "storage-driver": "overlay2"
+    }
+    EOF
+
+- name: Create systemd docker folder
+  shell: mkdir -p /etc/systemd/system/docker.service.d
+
+- name: Reload services
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: docker

@@ -6,6 +6,7 @@ base_pkg_list:
   - gnupg
   - lsb-release
   - net-tools
+  - software-properties-common
 
 kube_pkg_list:
   - kubeadm
