@@ -1,6 +1,8 @@
-# kubeadmin-cluster
+# kubeadm-cluster
 
-Deploy a testing k8s environment with vagrant
+Deploy a testing k8s environment with vagrant.
+- 1 Master
+- 1 Worker
 
 ## Requirements
 
@@ -9,17 +11,18 @@ Deploy a testing k8s environment with vagrant
 - OS: Linux/Unix
 - Packages Installed:
   - Ansible
-  - Virtualbox / VMWare
+  - Virtualbox
   - Vagrant
+  - make # Optional for Makefile commands
 
 ## Getting started
 
 ### Running cluster
 
-When you run the cluster at the first time vagrant creates VM's defined in **Vagrantfile** and provisions them using **Ansible**
+When you run the cluster at the first time vagrant creates VM's defined in **Vagrantfile** and provisions them using **Ansible**.
 
 ```
-vagrant up
+make deploy-cluster
 ```
 
 ### Accessing VM
@@ -36,5 +39,5 @@ vagrant ssh worker
 When you finish you can destroy the testing environment and recover machine resources.
 
 ```
-vagrant destroy
+make clean
 ```
