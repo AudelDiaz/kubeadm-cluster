@@ -12,3 +12,8 @@ kube_pkg_list:
   - kubeadm
   - kubelet
   - kubectl
+
+host_ip: {
+  "master": "10.0.0.7",
+  "worker": "10.0.0.9"
+}

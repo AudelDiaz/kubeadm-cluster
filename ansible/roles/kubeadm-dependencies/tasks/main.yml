@@ -40,7 +40,7 @@
 - name: Add KUBELET_EXTRA_ARGS
   lineinfile:
     path: /etc/default/kubelet
-    line: KUBELET_EXTRA_ARGS=--cgroup-driver=systemd
+    line: "KUBELET_EXTRA_ARGS=--cgroup-driver=systemd --node-ip={{ host_ip[inventory_hostname] }}"
     create: yes
 
 - name: Install k8s dependencies
