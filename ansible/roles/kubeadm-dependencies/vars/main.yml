@@ -9,11 +9,11 @@ base_pkg_list:
   - software-properties-common
 
 kube_pkg_list:
-  - kubeadm
-  - kubelet
-  - kubectl
+  - kubeadm=1.23.5-00
+  - kubelet=1.23.5-00
+  - kubectl=1.23.5-00
 
 host_ip: {
-  "master": "10.0.0.7",
-  "worker": "10.0.0.9"
+  "master": "192.168.56.7",
+  "worker": "192.168.56.9"
 }
