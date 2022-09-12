@@ -2,5 +2,6 @@
 - hosts: masters
   become: yes
   roles:
+    - kubeadm-dependencies
     - kubeadm-deploy-master
     - kubeadm-deploy-weave-net

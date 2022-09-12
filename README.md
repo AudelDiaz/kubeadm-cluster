@@ -22,7 +22,7 @@ Deploy a testing k8s environment with vagrant.
 When you run the cluster at the first time vagrant creates VM's defined in **Vagrantfile** and provisions them using **Ansible**.
 
 ```
-make deploy-cluster
+make deploy
 ```
 
 ### Accessing VM
@@ -41,3 +41,11 @@ When you finish you can destroy the testing environment and recover machine reso
 ```
 make clean
 ```
+
+### Other extra commands
+- `make start`: Start VM's
+- `make stop` : Stop VM's
+- `make install` : Install kubernetes cluster
+
+___
+*For more content visit https://audeldiaz.work*

@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "ansible/provision-playbook.yml"
+    ansible.playbook = "ansible/install-dependencies.yml"
     ansible.groups = {
       "workers" => ["worker"],
       "masters" => ["master"]
