@@ -46,6 +46,14 @@ make clean
 - `make start`: Start VM's
 - `make stop` : Stop VM's
 - `make install` : Install kubernetes cluster
+- `make tools`: Install Metrics Server and Weave Scope
+- `make copy-config`: Copy *master* **~/.kube/config** to host machine. (If you have a previews setup, make a backup and delete the original to create a new one.)
+
+### Running Weave Scope
+If you have installed monitoring tools using `make tools` and copied .kube/config to your host with `make copy-config`, you are able to open *Weave Scope* with this command: 
+```
+kubectl port-forward -n weave "$(kubectl get -n weave pod --selector=weave-scope-component=app -o jsonpath='{.items..metadata.name}')" 4040
+```
 
 ___
 *For more content visit https://audeldiaz.work*
