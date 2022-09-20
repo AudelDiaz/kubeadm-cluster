@@ -18,7 +18,7 @@ Deploy a testing k8s environment with vagrant.
 ## Getting started
 The following steps were designed for making easy the use of this repository using *make*.
 
-### Clone repository
+### Cloning repository
 We are gonna start cloning this repo:
 `git clone https://github.com/AudelDiaz/kubeadm-cluster.git`
 ### Running cluster
