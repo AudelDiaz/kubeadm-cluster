@@ -16,7 +16,11 @@ Deploy a testing k8s environment with vagrant.
   - make # Optional for Makefile commands
 
 ## Getting started
+The following steps were designed for making easy the use of this repository using *make*.
 
+### Clone repository
+We are gonna start cloning this repo:
+`git clone https://github.com/AudelDiaz/kubeadm-cluster.git`
 ### Running cluster
 
 When you run the cluster at the first time vagrant creates VM's defined in **Vagrantfile** and provisions them using **Ansible**.
@@ -56,4 +60,4 @@ kubectl port-forward -n weave "$(kubectl get -n weave pod --selector=weave-scope
 ```
 
 ___
-*For more content visit https://audeldiaz.work*
+*For more content please visit https://audeldiaz.work*
