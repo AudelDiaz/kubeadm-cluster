@@ -28,7 +28,7 @@
 
 - name: Download the Google Cloud public signing key
   get_url:
-    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    url: https://dl.k8s.io/apt/doc/apt-key.gpg
     dest: /usr/share/keyrings/kubernetes-archive-keyring.gpg
 
 - name: Add the Kubernetes apt repository
